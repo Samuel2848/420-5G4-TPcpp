@@ -12,6 +12,10 @@ FileManager::FileManager(const string& booksFile, const string& usersFile)
 
 // Save all library data
 bool FileManager::saveLibraryData(Library& library) {
+    if (!dataDirectoryExists()) {
+        cout << "Erreur : Le répertoire de données n'existe pas. Impossible de sauvegarder les données.\n";
+        return false;
+    }
     return saveBooksToFile(library) && saveUsersToFile(library);
 }
 
