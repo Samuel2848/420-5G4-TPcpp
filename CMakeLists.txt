@@ -12,4 +12,8 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 )
 
 # flag pour tous les warnings possible
-target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic)
+if(MSVC)
+    target_compile_options(bibliotheque PRIVATE /W4)
+else()
+    target_compile_options(bibliotheque PRIVATE -Wall -Wextra)
+endif()
